@@ -73,3 +73,29 @@ def update_newsletter_settings(instance, created, **kwargs):
             subscription.delete()
         except Subscription.DoesNotExist:
             pass
+
+@receiver(post_save, sender=Subscription)
+def update_user_settings_start(instance, **kwargs):
+    """
+    Every time a newsletter subscription occurs update
+    user settings if the subscriber is a user
+    """
+    try:
+        user = get_user_model().objects.get(email=instance.email)
+        setattr(user, plugs_newsletter_settings['AUTH_MODEL_NEWSLETTER_FIELD'], True)
+        user.save()
+    except get_user_model().DoesNotExist:
+        pass
+
+@receiver(post_delete, sender=Subscription)
+def update_user_settings_stop(instance, **kwargs):
+    """
+    Every time a newsletter unsubscription occurs update
+    user settings if the subscriber is a user
+    """
+    try:
+        user = get_user_model().objects.get(email=instance.email)
+        setattr(user, plugs_newsletter_settings['AUTH_MODEL_NEWSLETTER_FIELD'], False)
+        user.save()
+    except get_user_model().DoesNotExist:
+        pass
