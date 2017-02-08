@@ -50,7 +50,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author='Ricardo Lobo',
     author_email='ricardolobo@soloweb.pt',
-    url='https://github.com/ricardolobo/plugs-newsletter',
+    url='https://github.com/solocompt/plugs-newsletter',
     packages=[
         'plugs_newsletter',
     ],
