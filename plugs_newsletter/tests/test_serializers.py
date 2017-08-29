@@ -24,7 +24,7 @@ class TestSerializers(TestCase):
         """
         Ensures subscription serializer
         """
-        data = {'email': 'janedoe@example.com', 'first_name': 'Jane', 'last_name': 'Doe'}
+        data = {'email': 'janedoe@example.com', 'name': 'Jane Doe'}
         serializer = serializers.SubscriptionSerializer(data=data)
         self.assertTrue(serializer.is_valid())
         self.assertEqual(serializer.validated_data, data)

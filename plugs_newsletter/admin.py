@@ -6,9 +6,9 @@ class SubscriptionAdmin(admin.ModelAdmin):
     """
     Subscription Model Admin
     """
-    fields = ('email', 'first_name', 'last_name', 'created', 'updated')
+    fields = ('email', 'name', 'created', 'updated')
     readonly_fields = ('id', 'created', 'updated')
-    list_display = ('email', 'first_name', 'last_name')
-    search_fields = ('email', 'first_name', 'last_name')
+    list_display = ('email', 'name')
+    search_fields = ('email', 'name')
 
 admin.site.register(Subscription, SubscriptionAdmin)

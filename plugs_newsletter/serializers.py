@@ -16,4 +16,4 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         Metaclass definition
         """
         model = models.Subscription
-        fields = ('id', 'email', 'first_name', 'last_name', 'created', 'updated')
+        fields = ('id', 'email', 'name', 'created', 'updated')
